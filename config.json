@@ -1,0 +1,5 @@
+{
+    "connectionString": "mongodb://localhost/tasks",
+    "apiUrl": "http://localhost:3000",
+    "secret": "task1secretopaopa"
+}
