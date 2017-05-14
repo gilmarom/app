@@ -40,6 +40,10 @@ var LoginComponent = (function () {
             _this.loading = false;
         });
     };
+    LoginComponent.prototype.logout = function () {
+        this.authenticationService.logout();
+        this.router.navigate(['login']);
+    };
     return LoginComponent;
 }());
 LoginComponent = __decorate([

@@ -11,6 +11,7 @@ var task_service_1 = require("./services/task.service");
 var booking_service_1 = require("./services/booking.service");
 var AppComponent = (function () {
     function AppComponent() {
+        this.isAuthenticated = false;
     }
     return AppComponent;
 }());

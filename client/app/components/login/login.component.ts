@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(
                 data => {
-                  console.log(data);
+                    console.log(data);
                     this.router.navigate([this.returnUrl]);
                 },
                 error => {
@@ -40,5 +40,10 @@ export class LoginComponent implements OnInit {
                     this.alertService.error(error);
                     this.loading = false;
                 });
+    }
+
+    logout() {
+      this.authenticationService.logout();
+      this.router.navigate(['login']);
     }
 }

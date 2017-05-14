@@ -15,6 +15,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   messages = [];
   connection;
   message;
+  username;
 
   constructor(
     private chatService:ChatService

@@ -3,8 +3,6 @@ import {TaskService} from './services/task.service';
 import { HeaderComponent } from './header.component';
 import { OrderService } from './services/booking.service';
 
-
-
 @Component({
   moduleId: module.id,
   selector: 'my-app',
@@ -12,4 +10,6 @@ import { OrderService } from './services/booking.service';
   providers:[TaskService, OrderService]
 })
 
-export class AppComponent { }
+export class AppComponent {
+  public isAuthenticated: boolean = false;
+}

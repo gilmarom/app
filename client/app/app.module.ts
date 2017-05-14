@@ -14,6 +14,7 @@ import { AlertService, AuthenticationService, UserService } from './services/ind
 import { LoginComponent} from './components/login/login.component';
 import { AlertComponent } from './directives/index';
 import { ChatComponent } from './chat/chat.component'
+import { ChatUserlistComponent } from './chatuserlist/chatuserlist.component';
 
 @NgModule({
   imports: [ BrowserModule, HttpModule, FormsModule, routing , FormsModule ],
@@ -26,7 +27,8 @@ import { ChatComponent } from './chat/chat.component'
   RegisterComponent,
   LoginComponent,
   AlertComponent,
-  ChatComponent
+  ChatComponent,
+  ChatUserlistComponent
   ],
   providers: [
         // AuthGuard,

@@ -21,6 +21,7 @@ var index_1 = require("./services/index");
 var login_component_1 = require("./components/login/login.component");
 var index_2 = require("./directives/index");
 var chat_component_1 = require("./chat/chat.component");
+var chatuserlist_component_1 = require("./chatuserlist/chatuserlist.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -38,7 +39,8 @@ AppModule = __decorate([
             register_component_1.RegisterComponent,
             login_component_1.LoginComponent,
             index_2.AlertComponent,
-            chat_component_1.ChatComponent
+            chat_component_1.ChatComponent,
+            chatuserlist_component_1.ChatUserlistComponent
         ],
         providers: [
             // AuthGuard,

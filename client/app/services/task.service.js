@@ -18,24 +18,33 @@ var TaskService = (function () {
         console.log('Task Service Initialized...');
     }
     TaskService.prototype.getTasks = function () {
-        return this.http.get('/api/tasks')
+        return this.http.get('/api/tasks', this.jwt())
             .map(function (res) { return res.json(); });
     };
     TaskService.prototype.addTask = function (newTask) {
-        var headers = new http_1.Headers();
-        headers.append('Content-Type', 'application/json');
-        return this.http.post('/api/task', JSON.stringify(newTask), { headers: headers })
+        var requestOpt = this.jwt();
+        requestOpt.headers.append('Content-Type', 'application/json');
+        return this.http.post('/api/task', JSON.stringify(newTask), requestOpt)
             .map(function (res) { return res.json(); });
     };
     TaskService.prototype.deleteTask = function (id) {
-        return this.http.delete('/api/task/' + id)
+        return this.http.delete('/api/task/' + id, this.jwt())
             .map(function (res) { return res.json(); });
     };
     TaskService.prototype.updateStatus = function (task) {
-        var headers = new http_1.Headers();
-        headers.append('Content-Type', 'application/json');
-        return this.http.put('/api/task/' + task._id, JSON.stringify(task), { headers: headers })
+        var requestOpt = this.jwt();
+        requestOpt.headers.append('Content-Type', 'application/json');
+        return this.http.put('/api/task/' + task._id, JSON.stringify(task), requestOpt)
             .map(function (res) { return res.json(); });
+    };
+    // private helper methods
+    TaskService.prototype.jwt = function () {
+        // create authorization header with jwt token
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser && currentUser.token) {
+            var headers = new http_1.Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+            return new http_1.RequestOptions({ headers: headers });
+        }
     };
     return TaskService;
 }());

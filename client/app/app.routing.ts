@@ -6,6 +6,7 @@ import {TasksComponent} from './components/tasks/tasks.component';
 import {BookingComponent }  from './components/booking/booking.component';
 import {RegisterComponent } from './components/register/register.component';
 import {LoginComponent} from './components/login/login.component';
+import {AuthGuard} from './guards/auth.guard';
 
 const appRoutes: Routes = [
    { path: '' , component: TasksComponent },

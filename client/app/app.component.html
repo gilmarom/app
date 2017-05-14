@@ -21,8 +21,9 @@
     <hr>
     <div class="container">
         <div class="col-sm-8 col-sm-offset-2">
-          <chat-component></chat-component>
-            <alert></alert>
+          <chat-component *ngIf="isAuthenticated"></chat-component>
+          <chatuserlist-component></chatuserlist-component>
+          <alert></alert>
 
         </div>
     </div>
