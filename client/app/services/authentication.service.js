@@ -16,8 +16,10 @@ require("rxjs/add/operator/map");
 var AuthenticationService = (function () {
     function AuthenticationService(http) {
         this.http = http;
+        this.subscribes = [];
     }
     AuthenticationService.prototype.login = function (username, password) {
+        var _this = this;
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post('/api/users/authenticate', JSON.stringify({ username: username, password: password }), { headers: headers })
@@ -28,9 +30,24 @@ var AuthenticationService = (function () {
             if (user && user.token) {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
+                if (_this.subscribes) {
+                    console.log("auth subscriber " + _this.subscribes.length);
+                    var length_1 = _this.subscribes.length;
+                    for (var i = 0; i < length_1; i++) {
+                        console.log("auth subscriber " + i);
+                        _this.subscribes[i]();
+                    }
+                }
                 // this.appComponent.isAuthenticated = true;
             }
         });
+    };
+    AuthenticationService.prototype.subscribe = function (cb) {
+        console.log("one subscribe");
+        if (!this.subscribes) {
+            this.subscribes = [];
+        }
+        this.subscribes.push(cb);
     };
     AuthenticationService.prototype.getObservable = function () {
         var observable = new Observable_1.Observable(function (observer) {

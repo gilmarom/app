@@ -6,6 +6,7 @@ import {AppComponent} from '../app.component';
 
 @Injectable()
 export class AuthenticationService {
+  private subscribes = [];
     constructor(private http: Http,
       // private appComponent:AppComponent
     ) { }
@@ -22,15 +23,30 @@ export class AuthenticationService {
                 if (user && user.token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
+                    if(this.subscribes){
+                      console.log("auth subscriber " + this.subscribes.length);
+                      let length = this.subscribes.length;
+                      for(var i = 0 ; i< length;i++){
+                        console.log("auth subscriber " + i);
+                        this.subscribes[i]();
+                      }
+                    }
                     // this.appComponent.isAuthenticated = true;
                 }
             });
     }
 
+    subscribe(cb){
+      console.log("one subscribe");
+      if (!this.subscribes){
+        this.subscribes = [];
+      }
+      this.subscribes.push(cb);
+    }
     getObservable(){
         let observable = new Observable(
           observer => {
-            
+
           }
         );
         return observable;
