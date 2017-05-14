@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 // use JWT auth to secure the api
-app.use(expressJwt({ secret: config.secret }).unless({ path: ['/','/api/users/authenticate'] }));
+app.use(expressJwt({ secret: config.secret }).unless({ path: ['/','/api/users','/api/users/authenticate'] }));
 
 app.use('/', index);
 app.use('/api', tasks);
@@ -73,6 +73,11 @@ io.on('connection', (socket) => {
     });
 
     socket.on('add-message', (message) => {
-        io.emit('message', {type: 'new-message', text: message, username: "vasia"});
+        console.log("add-message "+ JSON.stringify(message));
+        if (online_users_set[message.resivername]){
+          let resiveSocket = online_users_set[message.resivername].socket;
+          resiveSocket.emit('message', {type: 'new-message', text: message.text,
+           sendername: message.sendername, time: message.time});
+        }
     });
 });
