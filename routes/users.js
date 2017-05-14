@@ -6,7 +6,7 @@ var config = require('../config.json');
 var db = mongojs(config.connectionString,['users']);
 
 // Register new users
-router.post('/users', function(req, res) {
+router.post('/users/register', function(req, res) {
   var user = req.body;
 
   if(!user.firstName || !user.lastName || !user.username || !user.password){

@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 // use JWT auth to secure the api
-app.use(expressJwt({ secret: config.secret }).unless({ path: ['/','/api/users','/api/users/authenticate','/favicon.ico'] }));
+app.use(expressJwt({ secret: config.secret }).unless({ path: ['/','/api/users/register','/api/users/authenticate','/favicon.ico'] }));
 
 app.use('/', index);
 app.use('/api', tasks);
