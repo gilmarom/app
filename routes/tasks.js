@@ -9,6 +9,7 @@ router.get('/tasks', function(req, res, next){
         if(err){
             res.send(err);
         }
+        console.log(typeof tasks);
         res.json(tasks);
     });
 });
@@ -37,6 +38,7 @@ router.post('/task', function(req, res, next){
                 res.send(err);
             }
             res.json(task);
+            console.log(res.json(task))
         });
     }
 });

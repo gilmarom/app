@@ -22,6 +22,9 @@ var login_component_1 = require("./components/login/login.component");
 var index_2 = require("./directives/index");
 var chat_component_1 = require("./chat/chat.component");
 var chatuserlist_component_1 = require("./chatuserlist/chatuserlist.component");
+var research_component_1 = require("./components/research/research.component");
+var finding_component_1 = require("./components/analytics/finding.component");
+var platform_browser_dynamic_1 = require("@angular/platform-browser-dynamic");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -40,20 +43,19 @@ AppModule = __decorate([
             login_component_1.LoginComponent,
             index_2.AlertComponent,
             chat_component_1.ChatComponent,
-            chatuserlist_component_1.ChatUserlistComponent
+            chatuserlist_component_1.ChatUserlistComponent,
+            research_component_1.ResearchComponent,
+            finding_component_1.FindingComponent,
         ],
         providers: [
             // AuthGuard,
             index_1.AlertService,
             index_1.AuthenticationService,
-            index_1.UserService
-            // providers used to create fake backend
-            // fakeBackendProvider,
-            // MockBackend,
-            // BaseRequestOptions
+            index_1.UserService,
         ],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);
 exports.AppModule = AppModule;
+platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(AppModule);
 //# sourceMappingURL=app.module.js.map

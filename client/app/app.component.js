@@ -13,6 +13,8 @@ var core_1 = require("@angular/core");
 var task_service_1 = require("./services/task.service");
 var booking_service_1 = require("./services/booking.service");
 var index_1 = require("./services/index");
+var research_service_1 = require("./services/research.service");
+var finding_service_1 = require("./services/finding.service");
 var AppComponent = (function () {
     function AppComponent(authService) {
         var _this = this;
@@ -23,9 +25,7 @@ var AppComponent = (function () {
             this.isAuthenticated = true;
         }
         else {
-            ;
             this.authService.subscribe(function () {
-                console.log("subskriber auth hit");
                 _this.isAuthenticated = true;
             });
         }
@@ -37,7 +37,7 @@ AppComponent = __decorate([
         moduleId: module.id,
         selector: 'my-app',
         templateUrl: 'app.component.html',
-        providers: [task_service_1.TaskService, booking_service_1.OrderService]
+        providers: [task_service_1.TaskService, research_service_1.ResearchService, booking_service_1.OrderService, finding_service_1.FindingService]
     }),
     __metadata("design:paramtypes", [index_1.AuthenticationService])
 ], AppComponent);

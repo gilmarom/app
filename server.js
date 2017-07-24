@@ -11,11 +11,22 @@ var index = require('./routes/index');
 var tasks = require('./routes/tasks');
 var orders = require('./routes/booking');
 var users = require('./routes/users');
+var researchs = require('./routes/researchs');
+var findings = require('./routes/findings');
 var port = 3000;
 
 var app = express();
 var http = require('http');//.Server(app);
+var PythonShell = require('python-shell');
 
+
+var options = {
+  mode: 'text',
+  pythonPath: 'home/gil/Desktop/Python-2.7.13rc1',
+  pythonOptions: ['-u'],
+  scriptPath: 'path/to/my/scripts',
+  args: ['value1', 'value2', 'value3']
+};
 
 //View Engine
 app.set('views', path.join(__dirname, 'views'));
@@ -36,6 +47,8 @@ app.use('/', index);
 app.use('/api', tasks);
 app.use('/api', orders);
 app.use('/api', users);
+app.use('/api', researchs);
+app.use('/api', findings);
 
 var server = http.createServer(app);
 server.listen(port, function(){

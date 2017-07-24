@@ -12,7 +12,7 @@ export class TaskService{
         return this.http.get('/api/tasks',this.jwt())
             .map(res => res.json());
     }
-
+    
     addTask(newTask){
         let requestOpt = this.jwt();
         requestOpt.headers.append('Content-Type', 'application/json');

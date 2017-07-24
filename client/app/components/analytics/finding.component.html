@@ -1,0 +1,32 @@
+
+
+<form class="well" (submit)="searchFinding($event)">
+      <div class="form-group">
+        <input type="text" [(ngModel)]="title" ng-model="listFilter" name="title" class="form-control" placeholder="Add Task...">
+      </div>
+</form>
+<h1> Welcome</h1>
+
+
+<table class="table">
+                    <tr>
+                        <th>Title</th>
+                        <th>Globe</th> 
+                        <th>Categoryname</th>
+                        <th>currentprice</th>
+                        <th>Sellerusername</th>
+                    </tr>
+                    <tr *ngFor="let find of findings;">
+                        <td>{{ find.title }}</td>
+                        <td>{{ find.globle }}</td>
+                        <td>{{ find.categoryname }}</td>
+                        <td>{{ find.currentprice }}</td>
+                        <td>{{ find.sellerusername }}</td>
+                      </tr>
+</table>                            
+                        
+
+<div>
+    <input type="button" (click)= "addTask($event)" value="Add task" class="btn btn-danger">
+</div>
+

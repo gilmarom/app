@@ -1,4 +1,5 @@
 export class Task {
-    title: string;
-    isDone: boolean;
+    userID: number;
+    research: string;
 }
+

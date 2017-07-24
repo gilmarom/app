@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
-var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/operator/map");
 var AuthenticationService = (function () {
     function AuthenticationService(http) {
@@ -31,14 +30,11 @@ var AuthenticationService = (function () {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 if (_this.subscribes) {
-                    console.log("auth subscriber " + _this.subscribes.length);
                     var length_1 = _this.subscribes.length;
                     for (var i = 0; i < length_1; i++) {
-                        console.log("auth subscriber " + i);
                         _this.subscribes[i]();
                     }
                 }
-                // this.appComponent.isAuthenticated = true;
             }
         });
     };
@@ -48,11 +44,6 @@ var AuthenticationService = (function () {
             this.subscribes = [];
         }
         this.subscribes.push(cb);
-    };
-    AuthenticationService.prototype.getObservable = function () {
-        var observable = new Observable_1.Observable(function (observer) {
-        });
-        return observable;
     };
     AuthenticationService.prototype.logout = function () {
         // remove user from local storage to log user out

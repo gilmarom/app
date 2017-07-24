@@ -1,6 +1,6 @@
-import { NgModule }      from '@angular/core';
+import { NgModule,Directive }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule} from '@angular/http';
+import { HttpModule, JsonpModule,Http} from '@angular/http';
 import { FormsModule} from '@angular/forms';
 import { AppComponent} from './app.component';
 import { TasksComponent} from './components/tasks/tasks.component';
@@ -15,9 +15,13 @@ import { LoginComponent} from './components/login/login.component';
 import { AlertComponent } from './directives/index';
 import { ChatComponent } from './chat/chat.component'
 import { ChatUserlistComponent } from './chatuserlist/chatuserlist.component';
+import { ResearchComponent } from './components/research/research.component';
+import { FindingComponent } from './components/analytics/finding.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic'
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 @NgModule({
-  imports: [ BrowserModule, HttpModule, FormsModule, routing , FormsModule ],
+  imports: [ BrowserModule, HttpModule, FormsModule, routing , FormsModule, JsonpModule ],
   declarations: [
   AppComponent,
   TasksComponent,
@@ -28,14 +32,19 @@ import { ChatUserlistComponent } from './chatuserlist/chatuserlist.component';
   LoginComponent,
   AlertComponent,
   ChatComponent,
-  ChatUserlistComponent
+  ChatUserlistComponent,
+  ResearchComponent,
+  FindingComponent,
+  
   ],
   providers: [
         // AuthGuard,
         AlertService,
         AuthenticationService,
-        UserService
-
+        UserService,
+        
+        
+       
         // providers used to create fake backend
         // fakeBackendProvider,
         // MockBackend,
@@ -45,3 +54,5 @@ import { ChatUserlistComponent } from './chatuserlist/chatuserlist.component';
 })
 
 export class AppModule { }
+platformBrowserDynamic().bootstrapModule(AppModule);
+

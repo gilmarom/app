@@ -21,6 +21,14 @@ var OrderService = (function () {
         return this.http.get('/api/orders')
             .map(function (res) { return res.json(); });
     };
+    OrderService.prototype.jwt = function () {
+        // create authorization header with jwt token
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (currentUser && currentUser.token) {
+            var headers = new http_1.Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+            return new http_1.RequestOptions({ headers: headers });
+        }
+    };
     return OrderService;
 }());
 OrderService = __decorate([

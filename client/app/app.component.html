@@ -16,9 +16,10 @@
     <script>
       System.import('app').catch(function(err){ console.error(err); });
     </script>
-
+    
     <app-header></app-header>
     <hr>
+    
     <div class="container">
         <div class="col-sm-8 col-sm-offset-2">
           <chatuserlist-component *ngIf="isAuthenticated"></chatuserlist-component>
@@ -26,11 +27,5 @@
         </div>
     </div>
     <router-outlet></router-outlet>
-
-
-
-
-
-
 </div>
 <footer></footer>
