@@ -13,7 +13,7 @@ var orders = require('./routes/booking');
 var users = require('./routes/users');
 var researchs = require('./routes/researchs');
 var findings = require('./routes/findings');
-var port = 3000;
+var port = 5000;
 
 var app = express();
 var http = require('http');//.Server(app);
@@ -51,7 +51,7 @@ app.use('/api', researchs);
 app.use('/api', findings);
 
 var server = http.createServer(app);
-server.listen(port, function(){
+server.listen(process.env.PORT || 5000, function(){
     console.log('Server started on port '+port);
 });
 
